@@ -11,24 +11,26 @@
         <link rel="stylesheet" href="css/master.css?ver=1.0">
     </head>
   <body>
-    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-item nav-link" href="#">Features</a>
-            <a class="nav-item nav-link" href="#">Pricing</a>
-            <a class="nav-item nav-link disabled" href="#">Disabled</a>
-          </div>
-        </div>
-    </nav> -->
-<nav>
-  <ul>
-    <li>Pradžia</li>
-    <li>Informacija</li>
-    <li>Kontaktai</li>
-  </ul>
-</nav>
+<header>
+  <div class="virsus">
+      <nav>
+          <ul>
+            <li>Pradžia</li>
+            <li>Informacija</li>
+            <li>Kontaktai</li>
+          </ul>
+        </nav>
+
+    <div class="paieska floatR">
+      <form class="" action="#" method="GET">
+          <button type="submit" name="paieskosButton"> Ieškoti </button>
+          <input type="text" name="paieska" value="">
+      </form>
+    </div>
+
+
+      <!-- IDEA: išsivalau flautą -->
+      <div class="float-fix"></div>
+
+  </div>
+</header>

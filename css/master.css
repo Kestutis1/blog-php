@@ -1,8 +1,11 @@
 * {
     box-sizing: border-box;
 }
-.float {
+.floatL {
      float: left;
+}
+.floatR {
+     float: right;
 }
 .float-fix {
     clear: both;
@@ -31,6 +34,10 @@
 .fonas-oran {
     background-color: orange;
 }
+.flex-container {
+  display: flex;
+  justify-content: flex-start;
+}
 /* ------- */
 
 body {
@@ -40,26 +47,27 @@ body {
 article {
   background-color: #7ad975;
 }
+
 aside {
   background-color: #5b68b3;
 }
 
+.paieska {
+    background-color: #eeaf46;
+    display: inline-block;
+    width:auto;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 25px;
+    margin-right: 20px;
+}
 
 /*------- Meniu---------------*/
 nav {
   width: 60%;
   background-color: #a7bfb1;
-}
-
-@media only screen and (max-width: 800px) {
-    nav {
-      width: 100%;
-    }
-}
-@media only screen and (max-width: 800px) {
-    ul {
-        text-align: center;
-    }
+  padding-left: 15%;
+  margin-bottom: 10px;
 }
 
 ul {
@@ -80,5 +88,22 @@ li {
     li {
       font-size: 20px;
       margin-left: 8px;
+    }
+
+}
+@media only screen and (max-width: 1023px) {
+    nav {
+      width: 100%;
+    }
+    .paieska {
+      margin-top: 0;
+    }
+}
+@media only screen and (max-width: 800px) {
+    ul {
+        text-align: center;
+    }
+    nav {
+      padding-left: 0%;
     }
 }
