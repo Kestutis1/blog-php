@@ -16,6 +16,10 @@
             <input type="submit" name="prisijungti" value="prisijungti">
         </form>
 
+        <br />
+
+        <a href="registracija.php"> Registrutis </a>
+
       </aside><!--  end rov-->
     </div><!--  end rov-->
   </div><!--  end Container-->

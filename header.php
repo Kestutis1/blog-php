@@ -15,7 +15,7 @@
   <div class="virsus">
       <nav>
           <ul>
-            <li>Pradžia</li>
+            <li><a href="index.php"> Pradžia </a></li>
             <li>Informacija</li>
             <li>Kontaktai</li>
           </ul>
