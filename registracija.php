@@ -7,7 +7,7 @@
       <article class="col-sm text-center aukstis-500">
         <h4> Registracija </h4>
 
-        <form class="registracija" action="#" method="post">
+        <form class="registracija" action="poRegistracijos.php" method="post">
 
           <label for="vardas"> Vardas </label> <br>
             <input type="text" name="vardas" autofocus value="" minlength="7" maxlength="70" title="įveskite vardą"
