@@ -18,18 +18,7 @@ $ikleliamDB = mysqli_query(getPrisijungimas(), $SQL);
               registrujam();
           }
 
-
-
-
-
-
-
-
-
-
-
-
-
+          
 
                     if ( $prisijungimas && $rodytiPrisijungima ) {
                         echo "Sėkmingai prisijungėme prie duombazės". DB_NAME;

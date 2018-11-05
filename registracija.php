@@ -8,7 +8,7 @@
         <h4> Registracija </h4>
 
 
-        <form name="registracijosForma" class="registracija" action="poRegistracijos.php" onsubmit="return patikrintiFormą();" method="post">
+        <form name="registracijosForma" class="registracija" method="post"  onsubmit="return patikrintiFormą();"  action="<?php echo htmlspecialchars('poRegistracijos.php');?>">
 
           <label for="vardas"> Vardas </label> <br>
                 <input type="text" title="" id="ivestiesVardas" pattern="[A-Za-z]+" name="vardas" value="" maxlength="40" > <br>
