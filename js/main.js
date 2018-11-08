@@ -1,91 +1,100 @@
 console.log("Labas");
 
-// IDEA: nusistatau registracijos formos laukų kintamuosius
+// IDEA: nusistatau registracijos formos laukų kintamuosius ir keičiu validacijos žinutę.
 
-var vardasIvestis = document.getElementById("ivestiesVardas");
-var pavardė= document.getElementById("pavar");
-var email = document.getElementById("mail");
-var telefonas = document.getElementById("tele");
-var slaptažodis1 = document.getElementById("slapt");
-var slaptažodis2 = document.getElementById("pakartotSlap");
+if (document.getElementById("ivestiesVardas")) {
+      var vardasIvestis = document.getElementById("ivestiesVardas");
+      vardasIvestis.setCustomValidity("reikia užpildyti");
 
+      // IDEA: Tikrinu vartotojo įvestis ir atitinkamai nustatau validaciją.
 
- vardasIvestis.setCustomValidity("reikia užpildyti");
- pavardė.setCustomValidity("reikia užpildyti");
- email.setCustomValidity("reikia užpildyti");
- telefonas.setCustomValidity("reikia užpildyti");
- slaptažodis1.setCustomValidity("reikia užpildyti");
- slaptažodis2.setCustomValidity("reikia užpildyti");
+      vardasIvestis.addEventListener("input", function (event) {
+        if (vardasIvestis.validity.typeMismatch) {
+          vardasIvestis.setCustomValidity("Čia reiktų įvesti savo vardą!");
 
+        } else {
+          vardasIvestis.setCustomValidity("");
+        }
+        });
+}
 
+if (document.getElementById("pavar")) {
+      var pavardė= document.getElementById("pavar");
+      pavardė.setCustomValidity("reikia užpildyti");
 
-vardasIvestis.addEventListener("input", function (event) {
-  if (vardasIvestis.validity.typeMismatch) {
-    vardasIvestis.setCustomValidity("Čia reiktų įvesti savo vardą!");
+      pavardė.addEventListener("input", function (event) {
+        if (pavardė.validity.typeMismatch) {
+          pavardė.setCustomValidity("Čia reiktų įvesti savo vardą!");
 
-  } else {
-    vardasIvestis.setCustomValidity("");
-  }
-  });
+        } else {
+          pavardė.setCustomValidity("");
+        }
+        });
+}
 
+if (document.getElementById("mail")) {
+      var email = document.getElementById("mail");
+       email.setCustomValidity("reikia užpildyti");
 
-pavardė.addEventListener("input", function (event) {
-  if (pavardė.validity.typeMismatch) {
-    pavardė.setCustomValidity("Čia reiktų įvesti savo vardą!");
+       email.addEventListener("input", function (event) {
+         if (email.validity.typeMismatch) {
+           email.setCustomValidity("Čia rikia įvesti savo elektroninio pašto simbolį su @ simboliu !");
 
-  } else {
-    pavardė.setCustomValidity("");
-  }
-  });
+         } else {
+           email.setCustomValidity("");
+         }
+       });
+}
 
+if (document.getElementById("tele")) {
+      var telefonas = document.getElementById("tele");
+      telefonas.setCustomValidity("reikia užpildyti");
 
-email.addEventListener("input", function (event) {
-  if (email.validity.typeMismatch) {
-    email.setCustomValidity("Čia rikia įvesti savo elektroninio pašto simbolį su @ simboliu !");
+      telefonas.addEventListener("input", function (event) {
+        if (telefonas.validity.typeMismatch) {
+          telefonas.setCustomValidity("Čia reikia įvesti savo telefono numerį!");
 
-  } else {
-    email.setCustomValidity("");
-  }
-});
+        } else {
+          telefonas.setCustomValidity("");
+        }
+        });
+}
 
+if (document.getElementById("slapt")) {
+      var slaptažodis1 = document.getElementById("slapt");
+      slaptažodis1.setCustomValidity("reikia užpildyti");
 
-telefonas.addEventListener("input", function (event) {
-  if (telefonas.validity.typeMismatch) {
-    telefonas.setCustomValidity("Čia reikia įvesti savo telefono numerį!");
+      slaptažodis1.addEventListener("input", function (event) {
+        if (slaptažodis1.validity.typeMismatch) {
+          slaptažodis1.setCustomValidity("Čia reiktų įvesti savo vardą!");
 
-  } else {
-    telefonas.setCustomValidity("");
-  }
-  });
+        } else {
+          slaptažodis1.setCustomValidity("");
+        }
+        });
+}
 
+if (document.getElementById("pakartotSlap")) {
+      var slaptažodis2 = document.getElementById("pakartotSlap");
+      slaptažodis2.setCustomValidity("reikia užpildyti");
 
-slaptažodis1.addEventListener("input", function (event) {
-  if (slaptažodis1.validity.typeMismatch) {
-    slaptažodis1.setCustomValidity("Čia reiktų įvesti savo vardą!");
+      slaptažodis2.addEventListener("input", function (event) {
+        if (slaptažodis2.validity.typeMismatch) {
+          slaptažodis2.setCustomValidity("Čia reiktų įvesti savo vardą!");
 
-  } else {
-    slaptažodis1.setCustomValidity("");
-  }
-  });
+        } else {
+          slaptažodis2.setCustomValidity("");
+        }
+      });
 
-
-slaptažodis2.addEventListener("input", function (event) {
-  if (slaptažodis2.validity.typeMismatch) {
-    slaptažodis2.setCustomValidity("Čia reiktų įvesti savo vardą!");
-
-  } else {
-    slaptažodis2.setCustomValidity("");
-  }
-});
-
-
-// IDEA: pasitikrinu ar sutampa slaptažodžiai
-function patikSlaptažodSutap() {
-    if (slaptažodis1.value !== slaptažodis2.value) {
-          slaptažodis2.setCustomValidity("Slaptažodžiai nesutampa!");
-          return false;
-    }
-    else {
-          return true;
-    }
+      // IDEA: pasitikrinu ar sutampa slaptažodžiai.
+      function patikSlaptažodSutap() {
+          if (slaptažodis1.value !== slaptažodis2.value) {
+                slaptažodis2.setCustomValidity("Slaptažodžiai nesutampa!");
+                return false;
+          }
+          else {
+                return true;
+          }
+      }
 }
