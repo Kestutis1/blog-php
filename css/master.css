@@ -52,6 +52,9 @@ aside {
   background-color: #5b68b3;
 }
 
+footer p {
+    text-align: center;
+}
 .paieska {
     background-color: #eeaf46;
     display: inline-block;
