@@ -16,6 +16,14 @@ if (document.getElementById("ivestiesVardas")) {
           vardasIvestis.setCustomValidity("");
         }
         });
+
+      // IDEA: Pakeičiu vardo pirmą raidę didžiają;
+
+        function pakeiciamIdidziajaRaide() {
+            var val = vardasIvestis.value;
+            val = val.charAt(0).toUpperCase() + val.slice(1);
+            document.getElementById("ivestiesVardas").value = val;
+        }
 }
 
 if (document.getElementById("pavar")) {

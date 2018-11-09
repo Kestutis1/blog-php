@@ -8,11 +8,11 @@
         <h4> Registracija </h4>
 
 
-        <form name="registracijosForma" class="registracija" method="post"  onsubmit="return patikrintiFormą();"  action="<?php echo htmlspecialchars('poRegistracijos.php');?>">
+        <form name="registracijosForma" class="registracija" method="post"  action="<?php echo htmlspecialchars('poRegistracijos.php');?>">
 
           <label for="vardas"> Vardas </label> <br>
-                <input type="text" title="" id="ivestiesVardas" pattern="[A-Za-z]+" name="vardas" value="" maxlength="40" > <br>
-
+                <input type="text" title="" id="ivestiesVardas"  name="vardas" value="" maxlength="40" > <br>
+<!-- pattern="[A-Za-z]+" -->
          <label for="pavarde"> Pavardė </label> <br>
           <input type="text" id="pavar" name="pavarde" value="" maxlength="70" title="" required> <br>
 
@@ -28,7 +28,7 @@
           <label for="password2"> Pakartokite slaptažodį </label> <br>
                 <input type="password2" id="pakartotSlap" name="password2" value="" maxlength="30" value="" title="" required> <br>
 
-            <button type="submit" onclick="patikSlaptažodSutap()" name="registruotis"> Registruotis </button>
+            <button type="submit" onclick="patikSlaptažodSutap(); pakeiciamIdidziajaRaide()" name="registruotis"> Registruotis </button>
 
 
         </form>
