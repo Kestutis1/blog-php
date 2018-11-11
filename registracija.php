@@ -26,7 +26,7 @@
                 <input type="password" id="slapt" name="password" maxlength="30" value="" title="" required > <br>
 
           <label for="password2"> Pakartokite slaptažodį </label> <br>
-                <input type="password2" id="pakartotSlap" name="password2" value="" maxlength="30" value="" title="" required> <br>
+                <input type="password" id="pakartotSlap" name="password2" value="" maxlength="30" value="" title="" required> <br>
 
             <button type="submit" onclick="patikSlaptažodSutap(); pakeiciamIdidziajaRaide()" name="registruotis"> Registruotis </button>
 
