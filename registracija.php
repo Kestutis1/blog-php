@@ -11,13 +11,13 @@
         <form name="registracijosForma" class="registracija" method="post"  action="<?php echo htmlspecialchars('poRegistracijos.php');?>">
 
           <label for="vardas"> Vardas </label> <br>
-                <input type="text" title="" id="ivestiesVardas"  name="vardas" value="" maxlength="40" > <br>
-<!-- pattern="[A-Za-z]+" -->
+                <input type="text" id="ivestiesVardas"  name="vardas" value="" maxlength="40" pattern="[A-Za-z]+"/> <br>
+
          <label for="pavarde"> Pavardė </label> <br>
           <input type="text" id="pavar" name="pavarde" value="" maxlength="70" title="" required> <br>
 
           <label for="telefonas"> Telefono numeris </label> <br>
-                <input type="text" id="tele" name="telefonas" value="" maxlength="14" title="" required> <br>
+                <input type="text" id="tele" name="telefonas" value="" placeholder="8665608140" maxlength="14" title="" required pattern="[0-9]+"/> <br>
 
           <label for="vardas"> Elpaštas </label> <br>
                 <input type="email" title="" class="" placeholder="pavyzdys@yahoo.com" id="mail" name="email" required> <br>
@@ -27,8 +27,9 @@
 
           <label for="password2"> Pakartokite slaptažodį </label> <br>
                 <input type="password" id="pakartotSlap" name="password2" value="" maxlength="30" value="" title="" required> <br>
+                 <br>
 
-            <button type="submit" onclick="patikSlaptažodSutap(); pakeiciamIdidziajaRaide()" name="registruotis"> Registruotis </button>
+            <button type="submit" onclick="patikSlaptažodSutap(); pakeiciamIdidziajaRaide();" name="registruotis"> Registruotis </button>
 
 
         </form>

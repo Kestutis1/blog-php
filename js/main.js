@@ -8,23 +8,33 @@ if (document.getElementById("ivestiesVardas")) {
 
       // IDEA: Tikrinu vartotojo įvestis ir atitinkamai nustatau validaciją.
 
-      vardasIvestis.addEventListener("input", function (event) {
-        if (vardasIvestis.validity.typeMismatch) {
-          vardasIvestis.setCustomValidity("Čia reiktų įvesti savo vardą!");
 
-        } else {
-          vardasIvestis.setCustomValidity("");
-        }
-        });
 
-      // IDEA: Pakeičiu vardo pirmą raidę didžiają;
+        vardasIvestis.oninvalid = function(event) {
+           event.target.setCustomValidity("Vardas turi būti iš raidžių");
+         }
+
+        vardasIvestis.onchange = function(event) {
+           event.target.setCustomValidity("");
+         }
+
+
+// IDEA: Ši funkcija užtikrina, kad be reikalo neiššokinėtų validacijos įspėjimo žinutė.
+
+        vardasIvestis.oninput = function(event) {
+           event.target.setCustomValidity("");
+      }
+}
+
+
+// IDEA: Pakeičiu vardo pirmą raidę didžiają;
 
         function pakeiciamIdidziajaRaide() {
-            var val = vardasIvestis.value;
+            var val = document.getElementById("ivestiesVardas").value;
             val = val.charAt(0).toUpperCase() + val.slice(1);
             document.getElementById("ivestiesVardas").value = val;
         }
-}
+
 
 if (document.getElementById("pavar")) {
       var pavardė= document.getElementById("pavar");
@@ -40,19 +50,27 @@ if (document.getElementById("pavar")) {
         });
 }
 
+
 if (document.getElementById("mail")) {
       var email = document.getElementById("mail");
        email.setCustomValidity("reikia užpildyti");
 
        email.addEventListener("input", function (event) {
          if (email.validity.typeMismatch) {
-           email.setCustomValidity("Čia rikia įvesti savo elektroninio pašto simbolį su @ simboliu !");
+           email.setCustomValidity("Elektroninis paštas turi turėti  @ simbolį ir . !");
 
          } else {
            email.setCustomValidity("");
          }
        });
+
+// IDEA: Ši funkcija užtikrina, kad be reikalo neiššokinėtų validacijos įspėjimo žinutė.
+
+       email.onchange = function(event) {
+          event.target.setCustomValidity("");
+        }
 }
+
 
 if (document.getElementById("tele")) {
       var telefonas = document.getElementById("tele");
@@ -60,12 +78,19 @@ if (document.getElementById("tele")) {
 
       telefonas.addEventListener("input", function (event) {
         if (telefonas.validity.typeMismatch) {
-          telefonas.setCustomValidity("Čia reikia įvesti savo telefono numerį!");
+          telefonas.setCustomValidity("Telefono numeris turi būti iš skaičių!");
 
         } else {
           telefonas.setCustomValidity("");
         }
         });
+
+
+// IDEA: Ši funkcija užtikrina, kad be reikalo neiššokinėtų validacijos įspėjimo žinutė.
+
+      telefonas.onchange = function(event) {
+          event.target.setCustomValidity("");
+      }
 }
 
 if (document.getElementById("slapt")) {
