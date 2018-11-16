@@ -1,5 +1,6 @@
 <?php include_once "header.php";
-      include "duombaze.php"       ?>
+      include "duombaze.php";
+      session_start();  ?>
 
 <section>
 
@@ -19,7 +20,7 @@
 
         <br />
 
-        <a href="registracija.php"> Registrutis </a>
+      <button type="button" name="button"><a href="registracija.php"> Registrutis </a></button>
 
       </aside><!--  end rov-->
     </div><!--  end rov-->
@@ -68,14 +69,16 @@ if (mysqli_num_rows($rezultatai) > 0) {
                   $resultataiMasyvas = mysqli_fetch_assoc($rezultatai);
                   echo $resultataiMasyvas['password'];
                   if (password_verify($password, $resultataiMasyvas['password'])) {
-                        echo "<br /> slaptažodžiai sutapo";
+                        $_SESSION['email'] = $email;
+                        setcookie('email', $_SESSION['email'], time()+60*60*7);
+                         echo "<br /> slaptažodžiai sutapo <br />" . $_SESSION['email'];
                   } else {
                         echo "<br />slaptažodžaiai nesutampa";
                   }
               } else {
               echo "Tokio įrašo duomenu bazėje nėra";
               }
-
+            }
 
 
 
@@ -94,7 +97,7 @@ if (mysqli_num_rows($rezultatai) > 0) {
 //               $msg = "Nepavyko prisijungti";
 //               echo $msg;
 //             }
-        }
+
 
 echo "<br />" . $msg;
 
