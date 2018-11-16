@@ -67,6 +67,11 @@ $rezultatai = mysqli_query(getPrisijungimas(), $SQL);
 if (mysqli_num_rows($rezultatai) > 0) {
                   $resultataiMasyvas = mysqli_fetch_assoc($rezultatai);
                   echo $resultataiMasyvas['password'];
+                  if (password_verify($password, $resultataiMasyvas['password'])) {
+                        echo "<br /> slaptažodžiai sutapo";
+                  } else {
+                        echo "<br />slaptažodžaiai nesutampa";
+                  }
               } else {
               echo "Tokio įrašo duomenu bazėje nėra";
               }
