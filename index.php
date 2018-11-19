@@ -71,6 +71,9 @@ if (mysqli_num_rows($rezultatai) > 0) {
                   if (password_verify($password, $resultataiMasyvas['password'])) {
                         $_SESSION['email'] = $email;
                         setcookie('email', $_SESSION['email'], time()+60*60*7);
+                        setcookie("auth", "1", time()+60*60*7);
+                        echo "<a href='#'>Įkelti Stripsnį</a><br />";
+                        echo "<a href='straipsniai.php'>Peržiūrėti savo traipsnius</a>";
                          echo "<br /> slaptažodžiai sutapo <br />" . $_SESSION['email'];
                   } else {
                         echo "<br />slaptažodžaiai nesutampa";
@@ -82,21 +85,13 @@ if (mysqli_num_rows($rezultatai) > 0) {
 
 
 
+// if (isset($_SESSION["email"])) {
+//    echo "<a href='#'>Įkelti Stripsnį</a><br />";
+//    echo "<a href='#'>Peržiūrėti savo traipsnius</a>";
+// }
 
-
-
-
-// if ($result->num_rows > 0) {
-//       $dataAray = $result->fetch_array();
-//         if (password_verify($password, $dataAray['password'])) {
-//               $msg = "Pavyko prisijungti";
-//               echo $msg;
-//             }
-//       }
-//       else {
-//               $msg = "Nepavyko prisijungti";
-//               echo $msg;
-//             }
+// session_destroy();
+// unset($_SESSION["email"]);
 
 
 echo "<br />" . $msg;
