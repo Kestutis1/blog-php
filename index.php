@@ -13,9 +13,12 @@
         <h4> Prisijungimas </h4>
 
         <form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-            <input type="email" name="email" value="" min="7" maxlength="70" title="įveskite elektroninio pašto adresą" required>
-            <input type="password" name="password" value="" min="7" maxlength="70" title="įveskite slaptažodį mažiausiai 7 simbolius" required>
-            <input type="submit" name="prisijungti" value="prisijungti">
+            <input type="email" id="email" name="email" value="" min="7" maxlength="70" title="įveskite elektroninio pašto adresą" required>
+            <input type="password" id="password" name="password" value="" min="7" maxlength="70" title="įveskite slaptažodį mažiausiai 7 simbolius" required>
+            <input type="submit" name="prisijungti" value="prisijungti"> <br />
+            <label for="prisimintiMane"> Prisiminti mane </label>
+            <input type="checkbox" name="prisimintiMane" />
+
         </form>
 
         <br />
@@ -29,6 +32,20 @@
 
 <?php
 
+// IDEA: Susigražinam reikšmes iš Cookies prisijungimo formos įvestims.
+
+if (isset($_COOKIE["email"]) && isset($_COOKIE["pass"])) {
+  $email = $_COOKIE["email"];
+  $password = $_COOKIE["pass"];
+
+  echo "<script> document.getElementById('email').value= '$email';
+                 document.getElementById('password').value= '$password';
+      </script>";
+}
+
+
+
+// IDEA: Nusistatom Žinutės kintamajį
 $msg = "Nulis";
 
 
@@ -65,16 +82,27 @@ function prisijungimas() {
 $SQL = "SELECT password FROM nariai WHERE email = '$email'";
 $rezultatai = mysqli_query(getPrisijungimas(), $SQL);
 
+// IDEA: Jai pavyko paimti duomenis iš duombazės
 if (mysqli_num_rows($rezultatai) > 0) {
                   $resultataiMasyvas = mysqli_fetch_assoc($rezultatai);
                   echo $resultataiMasyvas['password'];
+
+      // IDEA: Jai paimti prisijungimo ir įvesties duomenys sutaps.
                   if (password_verify($password, $resultataiMasyvas['password'])) {
                         $_SESSION['email'] = $email;
-                        setcookie('email', $_SESSION['email'], time()+60*60*7);
+                        $_SESSION['pass'] = $password;
+
+        // IDEA: Išsisaugom prisijungimo sausainiukus ateičiai jai lankytojas pageidauja.
+                        if (isset($_GET['prisimintiMane'])) {
+                          setcookie('email', $email, time()+60*60*7);
+                          setcookie('pass', $password, time()+60*60*7);
+                        }
+
+        // IDEA: Toliau vykdom prisijungimo skriptą.
                         setcookie("auth", "1", time()+60*60*7);
                         echo "<a href='#'>Įkelti Stripsnį</a><br />";
-                        echo "<a href='straipsniai.php'>Peržiūrėti savo traipsnius</a>";
-                         echo "<br /> slaptažodžiai sutapo <br />" . $_SESSION['email'];
+                        echo "<a href='straipsniai.php'>Peržiūrėti savo straipsnius</a>";
+                        echo "<br /> slaptažodžiai sutapo <br />" . $_SESSION['email'];
                   } else {
                         echo "<br />slaptažodžaiai nesutampa";
                   }
@@ -84,16 +112,7 @@ if (mysqli_num_rows($rezultatai) > 0) {
             }
 
 
-
-// if (isset($_SESSION["email"])) {
-//    echo "<a href='#'>Įkelti Stripsnį</a><br />";
-//    echo "<a href='#'>Peržiūrėti savo traipsnius</a>";
-// }
-
-// session_destroy();
-// unset($_SESSION["email"]);
-
-
+// IDEA: atsispausdinam žinutę, Ir užbaigiam skriptą.
 echo "<br />" . $msg;
 
 ?>
