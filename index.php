@@ -1,6 +1,11 @@
 <?php include_once "header.php";
       include "duombaze.php";
-      session_start();  ?>
+      session_start();
+
+// IDEA: Perkrovus puslapį nedings prisijungimo formos įvesties laukų įvestys.
+      $emailas = (isset($_GET['email']) == true) ?  $_GET['email'] : '';
+      $passwordas = (isset($_GET['password']) == true) ?  $_GET['password'] : '';
+  ?>
 
 <section>
 
@@ -13,8 +18,8 @@
         <h4> Prisijungimas </h4>
 
         <form class="" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">
-            <input type="email" id="email" name="email" value="" min="7" maxlength="70" title="įveskite elektroninio pašto adresą" required>
-            <input type="password" id="password" name="password" value="" min="7" maxlength="70" title="įveskite slaptažodį mažiausiai 7 simbolius" required>
+            <input type="email" id="email" name="email" value="<?php echo $emailas; ?>" min="7" maxlength="70" title="įveskite elektroninio pašto adresą" autocomplete="on" required>
+            <input type="password" id="password" name="password" value="<?php echo $passwordas; ?>" min="7" maxlength="70" title="įveskite slaptažodį mažiausiai 7 simbolius" autocomplete="on" required>
             <input type="submit" name="prisijungti" value="prisijungti"> <br />
             <label for="prisimintiMane"> Prisiminti mane </label>
             <input type="checkbox" name="prisimintiMane" />

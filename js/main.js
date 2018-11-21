@@ -1,7 +1,7 @@
 console.log("Labas");
 
 // IDEA: nusistatau registracijos formos laukų kintamuosius ir keičiu validacijos žinutę.
-
+// IDEA: Susitvarkom registracijos-vardo validaciją.
 if (document.getElementById("ivestiesVardas")) {
       var vardasIvestis = document.getElementById("ivestiesVardas");
       vardasIvestis.setCustomValidity("reikia užpildyti");
@@ -36,89 +36,97 @@ if (document.getElementById("ivestiesVardas")) {
         }
 
 
-if (document.getElementById("pavar")) {
-      var pavardė= document.getElementById("pavar");
-      pavardė.setCustomValidity("reikia užpildyti");
+// IDEA: pasilienku kitokio skripto pavyzdį(ne taip gerai suveikia).
 
-      pavardė.addEventListener("input", function (event) {
-        if (pavardė.validity.typeMismatch) {
-          pavardė.setCustomValidity("Čia reiktų įvesti savo vardą!");
-
-        } else {
-          pavardė.setCustomValidity("");
-        }
-        });
-}
-
-
-if (document.getElementById("mail")) {
-      var email = document.getElementById("mail");
-       email.setCustomValidity("reikia užpildyti");
-
-       email.addEventListener("input", function (event) {
-         if (email.validity.typeMismatch) {
-           email.setCustomValidity("Elektroninis paštas turi turėti  @ simbolį ir . !");
-
-         } else {
-           email.setCustomValidity("");
-         }
-       });
-
-// IDEA: Ši funkcija užtikrina, kad be reikalo neiššokinėtų validacijos įspėjimo žinutė.
-
-       email.onchange = function(event) {
-          event.target.setCustomValidity("");
-        }
-}
+// if (document.getElementById("pavar")) {
+//       var pavardė= document.getElementById("pavar");
+//       pavardė.setCustomValidity("reikia užpildyti");
+//
+//       pavardė.addEventListener("input", function (event) {
+//         if (pavardė.validity.typeMismatch) {
+//           pavardė.setCustomValidity("Čia reiktų įvesti savo vardą!");
+//
+//         } else {
+//           pavardė.setCustomValidity("");
+//         }
+//         });
+// }
 
 
-if (document.getElementById("tele")) {
-      var telefonas = document.getElementById("tele");
-      telefonas.setCustomValidity("reikia užpildyti");
 
-      telefonas.addEventListener("input", function (event) {
-        if (telefonas.validity.typeMismatch) {
-          telefonas.setCustomValidity("Telefono numeris turi būti iš skaičių!");
+// IDEA: Susitvarkom registracijos-pavardės validaciją.
+if (document.getById("pavar")) {
+      var registracijosPavar = document.getElementById("pavar");
+      registracijosPavar.setCustomValidity("Pavardės laukelį reikia užpildyti");
 
-        } else {
-          telefonas.setCustomValidity("");
-        }
-        });
+      registracijosPavar.oninvalid = function (event) {
+          event.target.setCustomValidity("Pavardės laukelis turi būti užpildytas raidžių simboliais");
+      }
 
-
-// IDEA: Ši funkcija užtikrina, kad be reikalo neiššokinėtų validacijos įspėjimo žinutė.
-
-      telefonas.onchange = function(event) {
+      registracijosPavar.oninput = function (event) {
           event.target.setCustomValidity("");
       }
 }
 
+// IDEA: Susitvarkom registracijos-elektroinio pašto validaciją.
+if (document.getElementById("mail")) {
+      var email = document.getElementById("mail");
+      email.setCustomValidity("reikia užpildyti");
+
+       email.oninvalid = function (event) {
+           event.target.setCustomValidity("Elektroninis paštas turi turėti  @ simbolį ir . ");
+         }
+
+      email.oninput = function (event) {
+          event.target.setCustomValidity("");
+      }
+    }
+
+
+// IDEA: Susitvarkom registracijos-telefono validaciją.
+if (document.getElementById("tele")) {
+      var telefonas = document.getElementById("tele");
+      telefonas.setCustomValidity("reikia užpildyti");
+
+      telefonas.oninvalid = function (event) {
+          event.target.setCustomValidity("Telefono numeris turi būti iš skaičių!");
+        }
+
+// IDEA: Ši funkcija užtikrina, kad be reikalo neiššokinėtų validacijos įspėjimo žinutė.
+
+      telefonas.oninput = function(event) {
+          event.target.setCustomValidity("");
+      }
+}
+
+
+// IDEA: Susitvarkom registracijos-slaptažodis1 validaciją.
 if (document.getElementById("slapt")) {
       var slaptažodis1 = document.getElementById("slapt");
       slaptažodis1.setCustomValidity("reikia užpildyti");
 
-      slaptažodis1.addEventListener("input", function (event) {
-        if (slaptažodis1.validity.typeMismatch) {
-          slaptažodis1.setCustomValidity("Čia reiktų įvesti savo vardą!");
-
-        } else {
-          slaptažodis1.setCustomValidity("");
+      slaptažodis1.oninvalid = function (event) {
+          event.target.setCustomValidity("Čia reikia įvesti slaptažodį.");
         }
-        });
+
+          slaptažodis1.oninput = function (event) {
+              event.target.setCustomValidity("");
+       }
 }
 
 if (document.getElementById("pakartotSlap")) {
       var slaptažodis2 = document.getElementById("pakartotSlap");
       slaptažodis2.setCustomValidity("reikia užpildyti");
 
-      slaptažodis2.addEventListener("input", function (event) {
-        if (slaptažodis2.validity.typeMismatch) {
-          slaptažodis2.setCustomValidity("Čia reiktų įvesti savo vardą!");
-
-        } else {
-          slaptažodis2.setCustomValidity("");
+      slaptažodis2.oninvalid = function (event) {
+          event.target.setCustomValidity("Čia reiktų pakartoti savo slaptažodį.");
         }
-      });
+
+      slaptažodis2.oninput = function (event) {
+          event.target.setCustomValidity("");
+      }
+ }
+
 
       // IDEA: pasitikrinu ar sutampa slaptažodžiai.
       function patikSlaptažodSutap() {
