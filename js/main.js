@@ -55,7 +55,7 @@ if (document.getElementById("ivestiesVardas")) {
 
 
 // IDEA: Susitvarkom registracijos-pavardės validaciją.
-if (document.getById("pavar")) {
+if (document.getElementById("pavar")) {
       var registracijosPavar = document.getElementById("pavar");
       registracijosPavar.setCustomValidity("Pavardės laukelį reikia užpildyti");
 
@@ -74,7 +74,7 @@ if (document.getElementById("mail")) {
       email.setCustomValidity("reikia užpildyti");
 
        email.oninvalid = function (event) {
-           event.target.setCustomValidity("Elektroninis paštas turi turėti  @ simbolį ir . ");
+           event.target.setCustomValidity("Elektroninis paštas turi turėti  @ simbolį ir simbolį .");
          }
 
       email.oninput = function (event) {
@@ -128,7 +128,7 @@ if (document.getElementById("pakartotSlap")) {
  }
 
 
-      // IDEA: pasitikrinu ar sutampa slaptažodžiai.
+  // IDEA: pasitikrinu ar sutampa slaptažodžiai.
       function patikSlaptažodSutap() {
           if (slaptažodis1.value !== slaptažodis2.value) {
                 slaptažodis2.setCustomValidity("Slaptažodžiai nesutampa!");
@@ -138,4 +138,32 @@ if (document.getElementById("pakartotSlap")) {
                 return true;
           }
       }
-}
+
+
+ // IDEA: Pradedu prisijungimo formos laukų validaciją.
+ // IDEA: Tikrinu prisijungimo-elapašto validaciją.
+
+ if (document.getElementById("email")) {
+        var elPastas = document.getElementById("email");
+
+        elPastas.oninvalid = function (event) {
+              event.target.setCustomValidity("Elektroninis paštas turi turėti  @ simbolį ir simbolį .");
+        }
+
+        elPastas .oninput = function (event) {
+              event.target.setCustomValidity("");
+        }
+ }
+
+ // IDEA: Tikrinu prisijungimo-slaptažodžio validaciją.
+ if (document.getElementById("password")) {
+        var prisijungtiSlaptažodis = document.getElementById("password");
+
+        prisijungtiSlaptažodis.oninvalid = function (event) {
+            event.target.setCustomValidity("Slaptažodį reikia įvesti teisingai norint prisijungti");
+        }
+
+        prisijungtiSlaptažodis.oninput = function (event) {
+            event.target.setCustomValidity("");
+        }
+ }

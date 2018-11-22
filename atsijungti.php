@@ -2,7 +2,7 @@
 
 session_start();
 session_destroy();
-
+setcookie("auth", "1", time()-1);
 // IDEA: Sunaikinam slapukus;
 // if (isset($_COOKIE["email"]) && isset($_COOKIE["pass"])) {
 //         $email = $_COOKIE["email"];
