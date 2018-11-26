@@ -34,7 +34,6 @@
 
 
 <?php
-
 // if ( $prisijungimas && $rodytiZinutes ) {
 //     echo "Prisijungem prie DB: " . DB_NAME . " sekmingai :)";
 // } elseif( $rodytiZinutes )  {
