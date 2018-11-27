@@ -14,7 +14,21 @@
   <div class="container">
     <div class="row">
       <article class="col-sm text-center aukstis-500">
-        <h1> Labas Pasauli </h1>
+        <h1> Straipsniai </h1>
+          <?php // IDEA: Paimam straipsnius 5 straipsnius iš duombazės ir atvaizdujam
+
+              $StrapsniųSQL = "SELECT * FROM straipsniai";
+              $straipsniuRezultatai = mysqli_query(getPrisijungimas(), $StrapsniųSQL);
+              if(mysqli_num_rows($straipsniuRezultatai) > 0) {
+                $masyvasStraipsniai = mysqli_fetch_array($straipsniuRezultatai);
+                 echo $masyvasStraipsniai['pavadinimas']."<br />";
+                 echo $masyvasStraipsniai['tekstas']."<br />";
+                 echo $masyvasStraipsniai['nariai_vardas']."<br />";
+                 echo $masyvasStraipsniai['laikas']."<br />";
+              }
+
+
+           ?>
       </article>
       <aside class="col-sm text-center">
 
@@ -34,11 +48,7 @@
 
 
 <?php
-// if ( $prisijungimas && $rodytiZinutes ) {
-//     echo "Prisijungem prie DB: " . DB_NAME . " sekmingai :)";
-// } elseif( $rodytiZinutes )  {
-//     echo "ERROR: nepavyko prisijungti prie DB: " . mysqli_connect_error();
-// }
+
 // IDEA: Susigražinam reikšmes iš Cookies prisijungimo formos įvestims.
 
 if (isset($_COOKIE["email"]) && isset($_COOKIE["pass"])) {
@@ -55,9 +65,6 @@ if (isset($_COOKIE['auth'])) {
       echo "<script> document.getElementById('prisijungimoForma').innerHTML= '<h4> Jūsų valdymas </h4><br />'; </script>";
       include ("straipsniai.php");
 }
-
-// IDEA: Nusistatom Žinutės kintamajį
-$msg = "Nulis";
 
 
 // IDEA: jeigu vartotojas paspaudė prisijungti šaukiam funkciją
@@ -89,7 +96,7 @@ function prisijungimas() {
     $password = mysqli_real_escape_string(getPrisijungimas(), $prisijungimas2);
 
 
-$SQL = "SELECT password FROM nariai WHERE email = '$email'";
+$SQL = "SELECT * FROM nariai WHERE email = '$email'";
 $rezultatai = mysqli_query(getPrisijungimas(), $SQL);
 
 // IDEA: Jai pavyko paimti duomenis iš duombazės
@@ -101,6 +108,8 @@ if (mysqli_num_rows($rezultatai) > 0) {
                   if (password_verify($password, $resultataiMasyvas['password'])) {
                         $_SESSION['email'] = $email;
                         $_SESSION['pass'] = $password;
+                        $_SESSION['vardas'] = $resultataiMasyvas['vardas'];
+                        $_SESSION['id'] = $resultataiMasyvas['id'];
                         setcookie("auth", "1", time()+60*60*7);
         // IDEA: sekmingai prisijungus pamaikino iš ekrano prisijungimoFormą
 
@@ -108,7 +117,7 @@ if (mysqli_num_rows($rezultatai) > 0) {
                                         // document.getElementById('prisijungimoForma').style.visibility= 'hidden';
                                         document.getElementById('prisijungimoForma').innerHTML= '<h4>Laba diena sveikiname sėkmingai prisijungus</h4><br />';
                              </script>";
-                        include ("straipsniai.php");
+                        include_once("straipsniai.php");
         // IDEA: Išsisaugom prisijungimo sausainiukus ateičiai jai lankytojas pageidauja.
                         if (isset($_GET['prisimintiMane'])) {
                           setcookie('email', $email, time()+60*60*7);
@@ -126,10 +135,8 @@ if (mysqli_num_rows($rezultatai) > 0) {
               }
             }
 
-
-// IDEA: atsispausdinam žinutę, Ir užbaigiam skriptą.
-    echo "<br />" . $msg;
-
+            
+      // IDEA: Scriptas baigesi.
 ?>
 
 </aside><!--  end rov-->
