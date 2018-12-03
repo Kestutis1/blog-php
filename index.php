@@ -20,13 +20,13 @@
               $StrapsniųSQL = "SELECT * FROM straipsniai";
               $straipsniuRezultatai = mysqli_query(getPrisijungimas(), $StrapsniųSQL);
               if(mysqli_num_rows($straipsniuRezultatai) > 0) {
-                $masyvasStraipsniai = mysqli_fetch_array($straipsniuRezultatai);
-                 echo $masyvasStraipsniai['pavadinimas']."<br />";
-                 echo $masyvasStraipsniai['tekstas']."<br />";
-                 echo $masyvasStraipsniai['nariai_vardas']."<br />";
-                 echo $masyvasStraipsniai['laikas']."<br />";
+                while ($masyvasStraipsniai = mysqli_fetch_array($straipsniuRezultatai)) {
+                  echo $masyvasStraipsniai['pavadinimas']."<br />";
+                  echo $masyvasStraipsniai['tekstas']."<br />";
+                  echo $masyvasStraipsniai['nariai_vardas']."<br />";
+                  echo $masyvasStraipsniai['laikas']."<br />";
+                }
               }
-
 
            ?>
       </article>
@@ -135,7 +135,7 @@ if (mysqli_num_rows($rezultatai) > 0) {
               }
             }
 
-            
+
       // IDEA: Scriptas baigesi.
 ?>
 

@@ -74,7 +74,36 @@ input {
   padding-left: 15px;
 }
 
+/*------- Tekstas---------------*/
+
+a:link {
+  text-decoration: none;
+  color: rgba(73, 73, 82, 0.83);
+}
+
+a:link {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+a:visited {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+a:hover {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+a:active {
+    text-decoration: none;
+    color: rgba(73, 73, 82, 0.83);
+}
+
+
 /*------- Meniu---------------*/
+
 nav {
   width: 60%;
   background-color: #a7bfb1;
