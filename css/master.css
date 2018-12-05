@@ -47,10 +47,14 @@ body {
 article {
   background-color: #7ad975;
   text-align: center;
+  width: 60%;
 }
 
 aside {
   background-color: #5b68b3;
+  text-align: center;
+  width: 35%;
+  max-height: 250px;
 }
 
 footer p {

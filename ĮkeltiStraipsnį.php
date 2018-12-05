@@ -27,9 +27,6 @@
       </form>
 
 
-  </article>
-
-</section>
 
 <?php
 
@@ -58,8 +55,16 @@ if(isset($_GET['ĮkeltiStraipsnį']))  {
     $SQL = "INSERT INTO `straipsniai` (`id`, `nariai_id`, `nariai_vardas`, `pavadinimas`, `tekstas`, `laikas`)
             VALUES (NULL, '$nariai_id', '$vardas', '$pavadinimas', '$tekstas', CURRENT_TIMESTAMP);";
     $IKELEM = mysqli_query(getPrisijungimas(), $SQL);
-
+    echo "<h3>Jūsų straipsnis sėkmingai įkeltas</h3>";
 
 }
 
-          include_once "foter.php"; ?>
+?>
+
+</article>
+
+</section>
+
+
+
+    <?php      include_once "foter.php"; ?>

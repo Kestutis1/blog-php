@@ -15,10 +15,8 @@
                 $SQL = "SELECT pavadinimas FROM straipsniai WHERE nariai_id = $id";
                 $rezultatiObjektas = mysqli_query(getPrisijungimas(), $SQL);
                     if (mysqli_num_rows($rezultatiObjektas) > 0) {
-                        $rezultati = mysqli_fetch_assoc($rezultatiObjektas);
-                        foreach ($rezultati as $antraste) {
-                              echo $antraste;
-
+                        while ($rezultati = mysqli_fetch_array($rezultatiObjektas)) {
+                            echo $rezultati['pavadinimas']."<br />";
                         }
                     } else {
                               echo "Jūs neturite straipsnių";
