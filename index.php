@@ -35,11 +35,15 @@
           <div class="" id="prisijungimoForma">
               <h4> Prisijungimas </h4>
               <form class=""  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                  <input type="email" id="email" name="email" value="<?php echo $emailas; ?>" min="7" maxlength="70" title="įveskite elektroninio pašto adresą" required>
-                  <input type="password" id="password" name="password" value="<?php echo $passwordas; ?>" min="7" maxlength="70" title="įveskite slaptažodį mažiausiai 7 simbolius" autocomplete="on" required>
+                  <label for="email"> Elektroninio pašto adresas </label> <br />
+                  <input type="email" id="email" name="email" value="<?php echo $emailas; ?>" min="7" maxlength="70" title="įveskite elektroninio pašto adresą" required> <br />
+                  <label for="password"> Slaptažodis </label> <br />
+                  <input type="password" id="password" name="password" value="<?php echo $passwordas; ?>" min="7"
+                   maxlength="70" title="įveskite slaptažodį mažiausiai 7 simbolius" autocomplete="on" required> <br /> <br />
+                   <label for="prisimintiMane"> Prisiminti mane </label>
+                   <input type="checkbox" name="prisimintiMane" /> <br />
                   <button type="submit" name="prisijungti"> Prisijungti </button> <br />
-                  <label for="prisimintiMane"> Prisiminti mane </label>
-                  <input type="checkbox" name="prisimintiMane" />
+
               </form>
               <br />
 
