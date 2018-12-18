@@ -167,3 +167,14 @@ if (document.getElementById("pakartotSlap")) {
             event.target.setCustomValidity("");
         }
  }
+
+// IDEA: Paslepiam straipsnio redagavimo formą
+if (document.querySelector('#strRedagaForm')) {
+        document.getElementById("strRedagaForm").style.display= "none";
+}
+
+// IDEA: Redaguojasi vartotojas savo straipsnį
+function redaguotStr() {
+    document.getElementById("straipsnis").style.display= "none";
+    document.getElementById("strRedagaForm").style.display= "block";
+}

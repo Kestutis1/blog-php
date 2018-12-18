@@ -21,7 +21,7 @@
                         while ($rezultati = mysqli_fetch_array($rezultatiObjektas)) {
                             $nariaiId= $rezultati['nariai_id'];
                             echo "<li>
-                                        <a href='peržiūrėtiStraipsniusSuTekstu.php?id=$nariaiId&pavadinimas=$rezultati[pavadinimas]'> $rezultati[pavadinimas] </a>
+                                        <a href='peržiūrėtiStraipsniusSuTekstu.php?pavadinimas=$rezultati[pavadinimas]'> $rezultati[pavadinimas] </a>
                                   </li>";
                             echo $rezultati['pavadinimas']."<br />";
                         }

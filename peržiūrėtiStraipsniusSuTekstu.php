@@ -2,19 +2,19 @@
 
   include_once "header.php";
   include "duombaze.php";
-
+  session_start();
        ?>
 
 <!-- Pradedame puslapio struktūrą -->
 
 <section>
-  <article>
-
+  <div class="row">
+    <article>
+      <div id="straipsnis">
       <?php
 
-
       if (isset($_COOKIE['auth'])) {
-        $id = $_GET['id'];
+        $id = $_SESSION['id'];
         $str = $_GET['pavadinimas'];
                 $SQL = "SELECT * FROM straipsniai WHERE nariai_id = '$id' AND pavadinimas = '$str'";
                 $rezultatiObjektas = mysqli_query(getPrisijungimas(), $SQL);
@@ -28,10 +28,27 @@
                   header('Location: index.php');
               }
 
+        ?>
+          </div> <!-- uždarom straipsnio div -->
 
-      ?>
+            <div id="strRedagaForm" class="">
+                <form  class="" action="redagavomStr.php" method="get">
+                    <input type="text" name="redPavadinimas" value="<?php echo $rezultati['pavadinimas']; ?>"><br />
+                    <input type="hidden" name="id" value="<?php echo $rezultati['id']; ?>"><br />
+                    <input type="text" name="redTekstas" value="<?php echo $rezultati['tekstas']; ?>"><br />
+                    <button type="submit" name="redaguojamStr"> Išsaugoti </button>
+                </form>
+            </div>
 
-  </article>
+        </article>
+
+
+
+      <aside>
+        <button onclick="redaguotStr();"> Redaguoti straipsnį </button>
+    </aside>
+
+  </div> <!-- Uždarom Rov -->
 </section>
 
 <?php include_once "foter.php"; ?>
