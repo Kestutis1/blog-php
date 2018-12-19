@@ -14,4 +14,13 @@ $rodytiZinutes = false;
         global $prisijungimas;
         return $prisijungimas;
     }
+
+    // IDEA: trim budais švarinam vartotojo prisijungimo duomenis
+
+    function test_input ($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 ?>

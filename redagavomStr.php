@@ -5,9 +5,12 @@ session_start();
 
 //IDEA: Įkeliam redaguotą straipsnį į duombazę taip Updeatinam jį
 if (isset($_GET['redaguojamStr'])) {
-      $id = $_GET['id'];
-      $pav = $_GET['redPavadinimas'];
-      $tekst = $_GET['redTekstas'];
+      $idTemp = test_input($_GET['id']);
+      $pavTemp = test_input($_GET['redPavadinimas']);
+      $tekstTemp = test_input($_GET['redTekstas']);
+      $id = mysqli_real_escape_string(getPrisijungimas(), $idTemp);
+      $pav = mysqli_real_escape_string(getPrisijungimas(), $pavTemp);
+      $tekst = mysqli_real_escape_string(getPrisijungimas(), $tekstTemp);
       echo $tekst;
       echo $id;
       echo $pav;
@@ -23,6 +26,19 @@ if (isset($_GET['redaguojamStr'])) {
               }
 
 }
+
+// IDEA: Straipsnio ištrinimo skriptas
+  if (isset($_GET['istrinti'])) {
+      $straipsnioId = $_GET['id'];
+       $istr = "DELETE FROM straipsniai WHERE id = '$straipsnioId'";
+      $istrinam = mysqli_query(getPrisijungimas(), $istr);
+      if (!$istrinam) {
+            echo "Atsiprašome ištrinti nepavyko straipsnio pavadinimu";
+      } else {
+            echo "Sėkmingai ištrynėme straipsnį pavadinimu";
+      }
+  }
+
 
 include_once "foter.php";
  ?>

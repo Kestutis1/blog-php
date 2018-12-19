@@ -79,16 +79,6 @@ if (isset($_COOKIE['auth'])) {
 }
 
 
-// IDEA: trim budais apsaugom vartotojo prisijungimo duomenis
-
-function test_input ($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-}
-
-
 // IDEA: apsaugom ir įvestis padarom kintamaisiais, jungemmės prie duombazės.
 
 function prisijungimas() {

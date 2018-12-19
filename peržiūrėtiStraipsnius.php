@@ -10,7 +10,7 @@
 <!-- Pradedame puslapio struktūrą -->
 
 <section>
-  <aside>
+  <article>
       <?php
 
 
@@ -23,7 +23,6 @@
                             echo "<li>
                                         <a href='peržiūrėtiStraipsniusSuTekstu.php?pavadinimas=$rezultati[pavadinimas]'> $rezultati[pavadinimas] </a>
                                   </li>";
-                            echo $rezultati['pavadinimas']."<br />";
                         }
                     } else {
                               echo "Jūs neturite straipsnių";
@@ -35,15 +34,6 @@
 
 
       ?>
-
-  </aside>
-
-
-
-
-
-
-  <article>
 
   </article>
 </section>

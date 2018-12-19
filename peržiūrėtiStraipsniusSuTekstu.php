@@ -42,13 +42,21 @@
 
         </article>
 
-
-
       <aside>
+    <!-- Mygtukas skirtas redagavimui -->
         <button onclick="redaguotStr();"> Redaguoti straipsnį </button>
+    <!-- Mygtukas skirtas ištrynimui -->
+        <form action="redagavomStr.php" method="get">
+          <input type="hidden" name="id" value="<?php echo $rezultati['id']; ?>">
+          <button name="istrinti" type="submit"> Ištrinti straipsnį </button>
+        </form>
     </aside>
 
   </div> <!-- Uždarom Rov -->
 </section>
 
-<?php include_once "foter.php"; ?>
+<?php
+
+    include_once "foter.php";
+
+    ?>
