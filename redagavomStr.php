@@ -8,6 +8,7 @@ if (isset($_GET['redaguojamStr'])) {
       $idTemp = test_input($_GET['id']);
       $pavTemp = test_input($_GET['redPavadinimas']);
       $tekstTemp = test_input($_GET['redTekstas']);
+      echo $idTemp.$pavTemp.$tekstTemp;
       $id = mysqli_real_escape_string(getPrisijungimas(), $idTemp);
       $pav = mysqli_real_escape_string(getPrisijungimas(), $pavTemp);
       $tekst = mysqli_real_escape_string(getPrisijungimas(), $tekstTemp);
@@ -16,7 +17,7 @@ if (isset($_GET['redaguojamStr'])) {
       echo $pav;
 
       // $SQL = "UPDATE staripsniai SET pavadinimas = $pav, tekstas = $tekst WHERE pavadinimas = $str";
-      $SQL="UPDATE straipsniai SET tekstas= '$tekst', pavadinimas = '$pav' WHERE id= 1 ";
+      $SQL="UPDATE straipsniai SET tekstas= '$tekst', pavadinimas = '$pav' WHERE id= '$id' ";
       $arPakeitem = mysqli_query(getPrisijungimas(), $SQL);
 
       if (!$arPakeitem) {
@@ -30,7 +31,7 @@ if (isset($_GET['redaguojamStr'])) {
 // IDEA: Straipsnio ištrinimo skriptas
   if (isset($_GET['istrinti'])) {
       $straipsnioId = $_GET['id'];
-       $istr = "DELETE FROM straipsniai WHERE id = '$straipsnioId'";
+       $istr = "DELETE FROM straipsniai WHERE id = '$straipsnioId' LIMIT 1";
       $istrinam = mysqli_query(getPrisijungimas(), $istr);
       if (!$istrinam) {
             echo "Atsiprašome ištrinti nepavyko straipsnio pavadinimu";

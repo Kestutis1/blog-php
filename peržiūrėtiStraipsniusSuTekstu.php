@@ -35,7 +35,8 @@
                 <form  class="" action="redagavomStr.php" method="get">
                     <input type="text" name="redPavadinimas" value="<?php echo $rezultati['pavadinimas']; ?>"><br />
                     <input type="hidden" name="id" value="<?php echo $rezultati['id']; ?>"><br />
-                    <input type="text" name="redTekstas" value="<?php echo $rezultati['tekstas']; ?>"><br />
+                    <!-- <input type="text" name="redTekstas" value=""><br /> -->
+                    <textarea type="text" name="redTekstas"><?php echo $rezultati['tekstas']; ?></textarea><br />
                     <button type="submit" name="redaguojamStr"> Išsaugoti </button>
                 </form>
             </div>
