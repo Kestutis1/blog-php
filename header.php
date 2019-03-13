@@ -21,14 +21,12 @@
           </ul>
         </nav>
 
-    <div class="paieska floatR">
-      <form class="" action="#" method="GET">
-          <button type="submit" name="paieskosButton"> Ieškoti </button>
-          <input type="text" name="paieska" value="">
-      </form>
-    </div>
-
-
+        <div class="paieska floatR">
+              <form class="" action="#" method="GET">
+                  <button type="submit" name="paieskosButton"> Ieškoti </button>
+                  <input type="text" name="paieska" value="">
+              </form>
+            </div>
       <!-- IDEA: išsivalau flautą -->
       <div class="float-fix"></div>
 
